@@ -1,0 +1,19 @@
+{
+  "name": "finalyearproject",
+  "version": "1.0.0",
+  "description": "FYP",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "dog"
+  ],
+  "author": "Dominik Bahrynowski",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "ws": "^6.1.4"
+  }
+}
