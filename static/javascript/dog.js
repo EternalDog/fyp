@@ -3,8 +3,10 @@
 const url = 'ws://localhost:8080';
 const connection = new WebSocket(url);
 
+let dog = {1: "dog", 2: "dog"};
+
 connection.onopen = () => {
-  connection.send('hey');
+  connection.send(dog);
   console.log("open");
 }
 
