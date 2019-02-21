@@ -27,15 +27,33 @@ console.log("Router running at Port " + port);
 //
 //
 //
-/*
-const WebSocket = require('ws')
 
-const wss = new WebSocket.Server({ port: 8080 })
 
-wss.on('connection', (ws) => {
-  ws.on('message', (message) => {
-    console.log(`Received message => ${message}`)
-  })
-  ws.send('ho!')
-})
-*/
+var CircularJSON = require('circular-json');
+
+app.get('/dog', function(req, res){
+    
+    var input = (CircularJSON.stringify(req.query.str).replace('"','')).replace('"','');
+    console.log(input);
+
+    //console.log(req.params.str);
+
+    
+    if (input == "dog"){
+        res.send("dog confirmed");
+    } 
+    else {
+        res.send("not dog"); 
+    }
+
+    
+});
+
+app.post('/pies', function(req, res){
+    
+    res.send(rows);
+    
+    
+});
+
+
