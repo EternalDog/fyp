@@ -3,11 +3,15 @@
 const url = 'ws://localhost:8080';
 const connection = new WebSocket(url);
 
-let dog = "Hello";
-let input = {str: ""};
+//let dog = {1: "dog", 2: "dog"};
+
+let doge = "dogge"
+let dog = doge.replace("g", "")
+console.log("'" + dog + "'");
+
 
 connection.onopen = () => {
-  connection.send(text);
+  connection.send(dog);
   console.log("open");
 }
 
@@ -18,16 +22,4 @@ connection.onerror = (error) => {
 
 connection.onmessage = (e) => {
   console.log(e.data);
-  document.getElementById("ret").innerHTML = e.data;
-}
-
-function send(){
-  input.str = document.getElementById("txtinput").value;
-
-  connection.send(document.getElementById("txtinput").value);
-
-  $.get("/dog", (input) , function(data, status){
-    document.getElementById("ret2").innerHTML = data;
-    console.log("Data: " + data + "\nStatus: " + status);
-  });
 }
