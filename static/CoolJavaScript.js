@@ -74,17 +74,19 @@ function test(){console.log("dog"); return "dog";}
 
   function drawMap() {
     var countries, height, path, projection, scale, svg, width;
-    var width = 860;
-    var height = 800;
-    var center = [6, 68.6];
-    var scale = 800;
+    var width = 1200;
+    var height = 1200;
+    //var center = [0,0];
+    var center = [0, 60.6];
+    //var center = [6, 68.6];
+    var scale = 3000;
     projection = (d3.geoMercator().scale(scale).translate([width / 2, 0]).center(center));
     path = (d3.geoPath().projection(projection));
     svg = (d3.select('#map').append('svg').attr('height', height).attr('width', width).style('background', '#71d1f2'));
     countries = svg.append("g");
-    d3.json('europe.json', function(data) {
+    d3.json('uk.json', function(data) {
       countries.selectAll('.country')
-      .data(topojson.feature(data, data.objects.europe).features)
+      .data(topojson.feature(data, data.objects.lad).features)
       .enter()
       .append('path')
       .attr('class', 'country')
