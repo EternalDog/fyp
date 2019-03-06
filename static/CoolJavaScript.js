@@ -76,7 +76,6 @@ function test(){console.log("dog"); return "dog";}
     var countries, height, path, projection, scale, svg, width;
     var width = 1200;
     var height = 1200;
-    //var center = [0,0];
     var center = [0, 60.6];
     //var center = [6, 68.6];
     var scale = 3000;
@@ -86,7 +85,7 @@ function test(){console.log("dog"); return "dog";}
     countries = svg.append("g");
     d3.json('uk.json', function(data) {
       countries.selectAll('.country')
-      .data(topojson.feature(data, data.objects.lad).features)
+      .data(topojson.feature(data, data.objects.GBR_adm2).features)
       .enter()
       .append('path')
       .attr('class', 'country')
