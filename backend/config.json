@@ -1,0 +1,31 @@
+{
+    "provinces": 100,
+    
+    "nation_names":["West Seaxe", "Mierce", "Northanhymbre"],
+    "nations":{
+        "West_Seaxe":{
+            "id": "WS",
+            "provinces": [],
+            "flag": "",
+            "leader": "",
+            "capital": ""
+        },
+        "Mierce":{
+            "id": "MR",
+            "provinces": [],
+            "flag": "",
+            "leader": "",
+            "capital": ""
+        },
+        "Northanhymbre":{
+            "id": "NT",
+            "provinces": [],
+            "flag": "",
+            "leader": "",
+            "capital": ""
+        }
+
+    },
+
+    "type":"pies"
+}

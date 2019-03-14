@@ -1,0 +1,83 @@
+html {
+	font-family: "verdana", "arial", sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+  #Information  {
+    text-align: left;
+
+  }
+
+  #map {
+
+    text-align: center;
+		margin-right: 450px;
+  }
+
+  #info {
+    border-style: solid;
+    text-align: center;
+    width: 300px;
+    float: right;
+		margin-right: 1%;
+    position: fixed;
+    right: 1px;
+    top: 10px;
+    background-color: #5d9afc;
+    border-radius: 20px
+
+  }
+
+  #flag {
+    height: 100px;
+    width: 160px;
+
+    border-radius: 8px;
+
+  }
+
+    .country {
+        fill: #D3D3D3;
+        stroke: #5b0000;
+        stroke-width: 1px;
+    }
+
+    .country:hover {
+        fill: darkgrey;
+    }
+
+
+
+    div.tooltipDestination {
+      position: absolute;
+      text-align: center;
+      width: 60px;
+      height: 16px;
+      padding: 2px;
+      font: 12px sans-serif;
+      background: red;
+      border: 0px;
+      border-radius: 0px;
+      pointer-events: none;
+      padding-top: 5px;
+    }
+
+    div.tooltipOrigin {
+      position: absolute;
+      text-align: center;
+      width: 60px;
+      height: 16px;
+      padding: 2px;
+      font: 12px sans-serif;
+      background: green;
+      border: 0px;
+      border-radius: 0px;
+      pointer-events: none;
+      padding-top: 5px;
+    }
