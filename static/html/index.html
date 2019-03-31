@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+     <link rel="stylesheet" href="static/css/CoolStyleSheet.css">
+  </head>
+  <body>
+
+    <div id="top_container" class="UI_Item">
+      <div class="top_container_item"> dog </div>
+      <div class="top_container_item"> dog </div>
+      <div class="top_container_item"> dog </div>
+      <div class="top_container_item"> dog </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="UI_Info" class="UI_Item">
+      <button type="button" onclick="UI_Controller(UI_Info_Content)">X</button> 
+      <div id="UI_Info_Content">
+        <br>
+        Name: <p class="inforow" id="name"></p>
+          <!-- <p class="inforow" id="capital">Capital: </p> -->
+        Region: <p class="inforow" id="region"> </p>
+        ID: <p class="inforow" id="id"> </p>
+          <!-- <p class="inforow" id="population">Population: </p> -->
+          <!-- <p class="inforow" id="language">Language: </p> -->
+          <!-- <p class="inforow">Flag: </p> -->
+          <!-- <img src="" alt="" id="flag"> -->
+      </div>
+
+    </div>
+
+    <div id="UI_Left" class="UI_Item">
+      <button type="button" onclick="UI_Controller(UI_Left_Content)">X</button> 
+      <div id="UI_Left_Content">content</div>
+    </div>
+
+    <div id="UI_Chat" class="UI_Item">
+      <textarea id="TE" class="Chat_Element" rows="4" cols="30" disabled></textarea> </br>
+      <input id="TI" class="Chat_Element" type="text" name="dog">
+      <button type="button">Send</button> 
+    </div>
+
+    <script src="static/lib/d3.v4.min.js"></script>
+    <script src="static/lib/topojson.v1.min.js"></script>
+    <script src="static/lib/jquery-3.3.1.min.js"></script>
+    <script src="static/js/CoolJavaScript.js"></script>
+    <script src="static/js/ui.js"></script>
+    
+
+  </body>
+</html>

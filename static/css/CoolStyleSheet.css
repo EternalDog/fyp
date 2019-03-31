@@ -9,75 +9,104 @@ body {
 	padding: 0px;
 }
 
-  #Information  {
-    text-align: left;
+#Information  {
+  text-align: left;
+}
 
-  }
+#map {
+  text-align: center;
+  margin-right: 450px;
+}
 
-  #map {
+#flag {
+  height: 100px;
+  width: 160px;
+  border-radius: 8px;
+}
 
-    text-align: center;
-		margin-right: 450px;
-  }
+.country {
+  fill: #D3D3D3;
+  stroke: #000000;
+  stroke-width: 1px;
+}
 
-  #info {
-    border-style: solid;
-    text-align: center;
-    width: 300px;
-    float: right;
-		margin-right: 1%;
-    position: fixed;
-    right: 1px;
-    top: 10px;
-    background-color: #5d9afc;
-    border-radius: 20px
+.country:hover {
+  fill: darkgrey;
+}
 
-  }
+/*  */
+/* UI */
+/*  */
 
-  #flag {
-    height: 100px;
-    width: 160px;
+#top_container {
+  display: grid; 
+  grid-gap: 0px;
+  row-gap: 0px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  position: fixed;
+  width: 60vw;
+  margin-left: 20vw;
+  visibility: visible;
+}
 
-    border-radius: 8px;
+.top_container_item {
+  padding: 5px
+}
 
-  }
+.UI_Item {
+  border-style: solid;
+  text-align: center;
+  background-color: #5d9afc;
+  border-radius: 20px
+}
 
-    .country {
-        fill: #D3D3D3;
-        stroke: #5b0000;
-        stroke-width: 1px;
-    }
+.UI_Item_hide {
+  border-style: solid;
+  text-align: center;
+  background-color: #5d9afc;
+  border-radius: 20px;
 
-    .country:hover {
-        fill: darkgrey;
-    }
+  width: 0px;
+  height: 0px;
+}
+
+#UI_Info{
+  width: auto;
+  float: right;
+  margin-right: 1%;
+  position: fixed;
+  right: 1px;
+  top: 20vh;
+  visibility: visible;
+}
+
+#UI_Left {
+  visibility: visible;
+  width: auto;
+  float: left;
+  margin-right: 1%;
+  position: fixed;
+  left: 1px;
+  top: 20vh;
+}
+
+#UI_Chat {
+  visibility: visible;
+  width: 300px;
+  float: left;
+  margin-right: 1%;
+  position: fixed;
+  left: 1px;
+  bottom: 10px;
+}
+
+#UI_Info_Content{
+  visibility: visible
+}
+
+button{
+  margin: 5px 30px
+}
 
 
-
-    div.tooltipDestination {
-      position: absolute;
-      text-align: center;
-      width: 60px;
-      height: 16px;
-      padding: 2px;
-      font: 12px sans-serif;
-      background: red;
-      border: 0px;
-      border-radius: 0px;
-      pointer-events: none;
-      padding-top: 5px;
-    }
-
-    div.tooltipOrigin {
-      position: absolute;
-      text-align: center;
-      width: 60px;
-      height: 16px;
-      padding: 2px;
-      font: 12px sans-serif;
-      background: green;
-      border: 0px;
-      border-radius: 0px;
-      pointer-events: none;
-      padding-top: 5px;
-    }
