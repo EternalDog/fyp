@@ -6,7 +6,7 @@ let welsh = [153,143,156,151,140,158,142,155,141,149,139,154,144,148,145,138,146
 
 
 $(document).ready(function() {
-  
+  getStateFromServer();
 });
 
 

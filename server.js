@@ -5,12 +5,8 @@
 var express = require("express");
 var path = require("path");
 var fs = require("fs");
-
-
 var app = express();
-
-let port = 8888;
-
+let port = 8880;
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -28,36 +24,83 @@ router.get('/', function(req, res) {
 app.use('/', router);
 app.listen(port);
 console.log("Router running at Port " + port);
-
 //
 
 //
+// Socket
+//
+
+const WebSocket = require('ws')
+
+const wss = new WebSocket.Server({ port: 8881 })
+
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    console.log(`Received message => ${message}`)
+  })
+  ws.send('ho!')
+})
+
+
 
 var provinces = [];
 var nations = {};
+var state = {};
 
 var config = JSON.parse(fs.readFileSync("backend/config.json"));
 var provinceData = JSON.parse(fs.readFileSync("static/json/uk.json"));
-//console.log(provinceData.objects.UK.geometries);
-//console.log(JSON.parse(dog).name);
 
 //province constructor
-function province(id, name, region){
+function province(id, name, region, owner){
     this.id = id;
     this.name = name;
     this.region = region;
-    this.owner = "";
+    this.owner = owner;
     this.pop = Math.floor(Math.random() * (1000 - 1 + 1)) + 1;
     this.buildings = [];
 }
 
 function poulateProvinceArray(){
     var dog;
+    var owner;
+
+    var obj = config.nations;
+
+
+
+
+
     for (i = 0; i < config.provinces; i++) {
+        owner = "";
         dog = provinceData.objects.UK.geometries[i].properties;
-        provinces.push(new province(i, dog.NAME_2, dog.NAME_1));
+        console.log(i);
+
+        for (i2 = 0; i2 < Object.keys(config.nations).length; i2++){
+            if (owner != ""){break}
+            for (var prop in config.nations) {
+                if ((obj[prop].provinces).indexOf(i) != -1){
+                    console.log("province " + i +" true, owner: " + prop)
+                    owner = prop;
+                    
+                }
+                else {console.log("province " + i +" false")}
+
+                
+                //console.log(obj[prop].id);
+            }
+        }
+        
+
+
+        provinces.push(new province(i, dog.NAME_2, dog.NAME_1, owner));
     }
-    //console.log(provinces);
+}
+
+function findOwner(provinceID){
+    //for (i = 0; i < config.nations.length; i++){
+      //  console.log(config.nations[i]);
+    //}
+    return "dog";
 }
 poulateProvinceArray();
 
@@ -68,4 +111,10 @@ function nation(id, name){
     this.name = name;
     
 }
+function populateNationArray(){
+
+}
+
+
+
 
