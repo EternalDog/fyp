@@ -1,3 +1,5 @@
+let state = {};
+
 let tick = [];
 let seaxe = [20,26,1,34,39,7,49,21,78,25,150,152,157,58,57,16,52,77,67,0,43,6,2,66,75,5,19];
 let mierce = [45,73,74,56,68,13,62,31,32,64,14,48,47,59,55,50,33,42,41];
@@ -11,6 +13,7 @@ $(document).ready(function() {
 
 
 
+
 var svg;
 var projection;
 var speed = 2800;//km/sec
@@ -19,30 +22,37 @@ var tooltip = d3.select('#map').append('div')
     .style('opacity', 0);
 
 
-
-
 function nationPressEventHandler(dog){
-
+  /*
   if (jQuery.inArray(dog.properties.Province_ID, tick) == -1) {
     tick.push(dog.properties.Province_ID);
     console.log(tick);
   }
 
-
   console.log(dog);
 
   $("#" + dog.properties.Province_ID).css("fill", "#1c9b00");
+  */
+
   //var input = dog.__data__.id;
     //testArr.push(input);
     //console.log(input);
-  changeElement(dog.properties)
-  }
 
-  function changeElement(data) {
+  console.log(dog.properties.Province_ID);
+
+  changeElement(dog.properties);
+
+}
+
+function dogs(dog){
+  console.log(dog);
+}
+
+function changeElement(data) {
     $("#name").html(data.NAME_2);
     $("#region").html(data.NAME_1);
     $("#id").html(data.Province_ID);
-  }
+}
 
 
 
@@ -58,10 +68,23 @@ function drawMap() {
   svg = (d3.select('#map').append('svg').attr('height', height).attr('width', width).style('background', '#71d1f2'));
   countries = svg.append("g");
 
+
+    //add london
+  svg.append('circle')
+    .attr('cx', '810')
+    .attr('cy', '870')
+    .attr('r', '40px')
+    //.attr('fill', 'black')
+    .attr('class', 'london')
+    .attr('id', (state.config.nations)+1)
+    //.attr('onclick', 'nationPressEventHandler(this.__data__)');
+    .attr('onclick', 'dogs(this)');
+  d3.select((state.config.nations)+1).lower();
+
+
+
   d3.json('static/json/uk.json', function(data) {
-
     console.log(topojson.feature(data, data.objects.UK));
-
     countries.selectAll('.country')
     .data(topojson.feature(data, data.objects.UK).features)
     .enter()
@@ -75,10 +98,12 @@ function drawMap() {
 
     PaintMap();
 
-
-
     return;
   });
+
+
+
+
     
   var dog = [width - 100, height - 100]
 
@@ -151,6 +176,7 @@ function addID(){
 function test(){console.log("dog"); return "dog";}
 
 function PaintMap(dog){
+  /*
   $.each(seaxe, function( index, value ) {
     $("#" + value).css("fill", "#5b0000");
   });
@@ -163,5 +189,6 @@ function PaintMap(dog){
   $.each(welsh, function( index, value ) {
     $("#" + value).css("fill", "#1c9b00");
   });
+  */
 }
 

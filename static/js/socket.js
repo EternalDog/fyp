@@ -1,15 +1,10 @@
 const url = 'ws://localhost:8881';
 const connection = new WebSocket(url);
 
-//let dog = {1: "dog", 2: "dog"};
-
-let doge = "dogge"
-let dog = doge.replace("g", "")
-//console.log("'" + dog + "'");
-
 
 connection.onopen = () => {
   console.log("Socketopen");
+  connection.send("state");
 }
 
 connection.onerror = (error) => {
@@ -17,9 +12,30 @@ connection.onerror = (error) => {
 }
 
 connection.onmessage = (e) => {
-    console.log("socket message: " + e.data);
-  }    
+    //console.log("socket message: ");
+    //console.log(e.data)
+  state = JSON.parse(e.data);
+  console.log(state)
+}    
 
 function getStateFromServer(){
-    connection.send(dog);
+  
+  //todo
+
+  /*
+  do {
+    try {
+    connection.send("state");
+    }
+    catch(err){
+     console.log(err)
+    }
+  }
+  while (connection.readyState == 0){
+
+  }
+  //console.log(connection.readyState)
+  //
+
+  */
 }
