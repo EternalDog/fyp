@@ -1,5 +1,6 @@
 // R00137275
 // Dominik Bahrynowski
+// server
 
 //imports
 var express = require("express");
