@@ -31,8 +31,18 @@ body {
 }
 
 .country:hover {
+  fill: rgb(169, 169, 169);
+}
+
+.london {
+  fill: #D3D3D3;
+  stroke: #000000;
+  stroke-width: 1px;
+}
+.london:hover {
   fill: darkgrey;
 }
+
 
 /*  */
 /* UI */
@@ -109,4 +119,51 @@ button{
   margin: 5px 30px
 }
 
+/*  */
+/* province styling */
+/* */
+
+/* political */
+.Seaxe{
+  fill: #5b0000;
+}
+.Mierce{
+  fill: #06005b;
+}
+.Northanhymbre{
+  fill: #ff9900;
+}
+.Britons{
+  fill: #1c9b00;
+}
+.Lutae{
+  fill: #00788d;
+}
+.Picts{
+  fill: #00788d;
+}
+.East_Engla{
+  fill: #0e008d;
+}
+.Cornubia{
+  fill: #351e00;
+}
+
+/* population */ 
+
+.pop_num_1{
+  fill: #5b0000;
+}
+.pop_num_2{
+  fill: #a55d00;
+}
+.pop_num_3{
+  fill: #c5d300;
+}
+.pop_num_4{
+  fill: #7fc400;
+}
+.pop_num_5{
+  fill: #2dc000;
+}
 

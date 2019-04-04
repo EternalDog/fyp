@@ -7,8 +7,8 @@
   <body>
 
     <div id="top_container" class="UI_Item">
-      <div class="top_container_item"> dog </div>
-      <div class="top_container_item"> dog </div>
+      <div class="top_container_item"> Provinces <button type="button" onclick="PaintMap()">X</button> </div>
+      <div class="top_container_item"> Population <button type="button" onclick="PaintMapPop()">X</button> </div>
       <div class="top_container_item"> dog </div>
       <div class="top_container_item"> dog </div>
     </div>
@@ -20,18 +20,15 @@
       <div id="UI_Info_Content">
         <br>
         Name: <p class="inforow" id="name"></p>
-          <!-- <p class="inforow" id="capital">Capital: </p> -->
-        Region: <p class="inforow" id="region"> </p>
         ID: <p class="inforow" id="id"> </p>
-          <!-- <p class="inforow" id="population">Population: </p> -->
-          <!-- <p class="inforow" id="language">Language: </p> -->
-          <!-- <p class="inforow">Flag: </p> -->
-          <!-- <img src="" alt="" id="flag"> -->
+        Owner: <p class="inforow" id="owner"> </p>
+        Population: <p class="inforow" id="pop"> </p>
+
       </div>
 
     </div>
 
-    <div id="UI_Left" class="UI_Item">
+    <div id="UI_Left" class="UI_Item" oncontextmenu="javascript:RightClickEventHandler(this.id);return false;" >
       <button type="button" onclick="UI_Controller(UI_Left_Content)">X</button> 
       <div id="UI_Left_Content">content</div>
     </div>
