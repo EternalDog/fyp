@@ -1,11 +1,11 @@
 //r00137275
-
-let state = {};
 let tick = [];
 let player = {};
 
+//let state = 0;
+
 $(document).ready(function() {
-  getStateFromServer();
+  //getStateFromServer();
 });
 
 var svg;

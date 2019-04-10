@@ -38,6 +38,7 @@ var provinceData = JSON.parse(fs.readFileSync("static/json/uk.json"));
 var provinces = [];
 var nations = {};
 var state = {
+    tag: "state",
     config: {},
     provinces: [],
     nations: {},
@@ -104,22 +105,61 @@ populateNationArray();
 //
 
 const WebSocket = require('ws')
-
 const wss = new WebSocket.Server({ port: 8881 })
+let clients = [];
+
 
 wss.on('connection', (ws) => {
-  ws.on('message', (message) => {
-    console.log(`Received message => ${message}`);
     
-    if (message == "state") {
-        ws.send(JSON.stringify(state));
-    }
-    else {
-        ws.send("socket request err");
-    }
+    console.log("Number of clients: " + wss.clients.size)
+
+    clients.push(ws);
+
+    ws.on('message', (message) => {
+    
+        if (message == "state") {
+            console.log(`Received message => ${message}`);
+            ws.send(JSON.stringify(state));
+        }
+        else {
+            try {
+                state = JSON.parse(message);
+                console.log("Received message => object")
+                PlayersEndedTurns++;
+                if (TryEndTurn() == 1) {
+                    
+                    clients.forEach(function(client) {
+                        client.send("Turn end");
+                    });
+
+
+                    //ws.send("Turn end");
+                }
+            }
+            catch (err){
+                console.log(err)
+            }
+
+        }
 
   })
 })
+
+//
+//turn change
+//
+
+let PlayersEndedTurns = 0;
+
+function TryEndTurn(){
+    if (PlayersEndedTurns < wss.clients.size){
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
 
 //
 //auxiliary functions 
