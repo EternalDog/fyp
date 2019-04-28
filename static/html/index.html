@@ -2,35 +2,43 @@
 <html>
   <head>
     <meta charset="utf-8">
-     <link rel="stylesheet" href="static/css/CoolStyleSheet.css">
+    <title>Britannia</title>
+    <link rel="stylesheet" href="static/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="static/css/CoolStyleSheet.css">
   </head>
   <body>
 
     <div id="top_container" class="UI_Item">
-      <div class="top_container_item"> Provinces <button type="button" onclick="PaintMap()">X</button> </div>
-      <div class="top_container_item"> Population <button type="button" onclick="PaintMapPop()">X</button> </div>
-      <div class="top_container_item"> dog </div>
-      <div class="top_container_item"> dog </div>
+      <div class="top_container_item"> Provinces <button type="button" onclick="PaintMap()">Show</button> </div>
+      <div class="top_container_item"> Population <button type="button" onclick="PaintMapPop()">Show</button> </div>
+      <div class="top_container_item"> Armies <button type="button" onclick="PaintMapArmies()">Show</button> </div>
     </div>
 
     <div id="map"></div>
 
     <div id="UI_Info" class="UI_Item">
       <button type="button" onclick="UI_Controller(UI_Info_Content)">X</button> 
+      <h3>Province:</h3>
       <div id="UI_Info_Content">
-        <br>
-        Name: <p class="inforow" id="name"></p>
-        ID: <p class="inforow" id="id"> </p>
-        Owner: <p class="inforow" id="owner"> </p>
-        Population: <p class="inforow" id="pop"> </p>
-
+        <p class="inforow" id="name"></p>
+        <p class="inforow" id="owner"> </p>
+        <p class="inforow" id="pop"> </p>
+        <p class="inforow" id="army"> </p>
       </div>
 
     </div>
 
     <div id="UI_Left" class="UI_Item" oncontextmenu="javascript:RightClickEventHandler(this.id);return false;" >
       <button type="button" onclick="UI_Controller(UI_Left_Content)">X</button> 
-      <div id="UI_Left_Content">content</div>
+      <div id="UI_Left_Content">
+        <h3 id="Player_nation_left_box_name"></h3>
+        <img id="Player_nation_left_box_flag" src="" alt="nation">
+        <p id="funds"></p>
+        <br>
+        <button type="button" onclick="recruitArmy()">Recruit an army</button>
+
+      </div>
+      
     </div>
 
     <div id="UI_Chat" class="UI_Item">
@@ -40,13 +48,33 @@
     </div>
 
     <div id="UI_EndTurn" class="UI_Item">
-      <p>dog</p>
-      <button type="button" onclick="sendStateToServer()">End Turn</button>
+      <h3 id="turn">Turn 1</h3>
+      <button type="button" id="end_turn" onclick="sendStateToServer()">End Turn</button>
+    </div>
+
+    
+
+    <div id="dialog" title="Nation selection">
+      <h3>Select the nation you want to play</h3>
+      <div id="dialogue_inner_container"> 
+        <div class="dialogue_container_item"> <img src="static/img/icon/Seaxe.png" alt="Seaxe" onclick="setPlayerNation('Seaxe')"> Seaxe </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/Mierce.png" alt="Mierce" onclick="setPlayerNation('Mierce')"> Mierce </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/Northanhymbre.png" alt="Northanhymbre" onclick="setPlayerNation('Northanhymbre')"> Northanhymbre </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/Britons.png" alt="Britons" onclick="setPlayerNation('Britons')"> Britons </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/Picts.png" alt="Picts" onclick="setPlayerNation('Picts')"> Picts </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/Cornubia.png" alt="Cornubia" onclick="setPlayerNation('Cornubia')"> Cornubia </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/East_Engla.png" alt="East_Engla" onclick="setPlayerNation('East_Engla')"> East Engla </div>
+        <div class="dialogue_container_item"> <img src="static/img/icon/Lutae.png" alt="Lutae" onclick="setPlayerNation('Lutae')"> Lutae </div>
+
+        
+
+      </div>
     </div>
 
     <script src="static/lib/d3.v4.min.js"></script>
     <script src="static/lib/topojson.v1.min.js"></script>
     <script src="static/lib/jquery-3.3.1.min.js"></script>
+    <script src="static/lib/jquery-ui.min.js"></script>
     <script src="static/js/socket.js"></script>
     <script src="static/js/CoolJavaScript.js"></script>
     <script src="static/js/ui.js"></script>

@@ -1,96 +1,109 @@
 {
     "provinces": 160,
-    "population_range": 1000,
-    
-    "nation_names":["Seaxe", "Mierce", "Northanhymbre", "Britons", "Lutae", "East_Engla", "Britons", "Picts", "Cornubia"],
+    "population_range": 5000,
+    "movement_distance" : 50,
+    "nations_left": 8,
+    "nation_names":["Seaxe", "Mierce", "Northanhymbre", "Lutae", "East_Engla", "Britons", "Picts", "Cornubia"],
     "nations":{
         "Seaxe":{
-            "id": "WS",
-            "provinces": [20,26,1,34,39,7,49,21,78,25,150,152,157,58,57,16,52,77,67,0,43,6,2,66,75,5,19],
+            "name": "Seaxe",
+            "provinces": [4,61,20,26,1,34,39,7,49,21,78,25,150,152,157,58,57,16,52,77,67,0,43,6,2,66,75,5,19,23],
             "flag": "",
             "leader": "King Cenwalh",
-            "capital": "",
+            "capital": 23,
             "culture": "Saxon",
-            "religion": "Christian"
+            "religion": "Christian",
+            "army": 3000,
+            "funds": 1000
         },
         "Mierce":{
-            "id": "MR",
-            "provinces": [45,73,74,56,68,13,62,31,32,64,14,48,47,59,55,50,33,42,41],
+            "name": "Mierce",
+            "provinces": [45,73,74,56,68,13,62,31,32,64,14,48,47,59,55,50,33,42,41,29],
             "flag": "",
             "leader": "King Penda",
-            "capital": "",
+            "capital": 62,
             "culture": "Engla",
-            "religion": "Pagan"
+            "religion": "Pagan",
+            "army": 3000,
+            "funds": 1000
         },
         "Northanhymbre":{
-            "id": "NT",
+            "name": "Northanhymbre",
             "provinces": [76,44,18,79,54,38,63,24,12,17,71,46,131,115,124,117],
             "flag": "",
             "leader": "King Eadwine",
-            "capital": "",
+            "capital": 79,
             "culture": "Engla",
-            "religion": "Christian"
+            "religion": "Christian",
+            "army": 3000,
+            "funds": 1000
         },
         "Lutae": {
-            "id": "JT",
-            "provinces": [27,23,60,28,69,36,53,29,160],
+            "name": "Lutae",
+            "provinces": [27,60,28,69,36,53,160],
             "flag": "",
             "leader": "??",
-            "capital": "",
+            "capital": 28,
             "culture": "Lutae",
-            "religion": "Pagan"   
+            "religion": "Pagan",
+            "army": 500,
+            "funds": 1000
+               
         },
         "East_Engla": {
-            "id": "EE",
+            "name": "East_Engla",
             "provinces": [8, 65, 40],
             "flag": "",
             "leader": "??",
-            "capital": "",
+            "capital": 65,
             "culture": "Lutae",
-            "religion": "Pagan"
+            "religion": "Pagan",
+            "army": 500,
+            "funds": 1000  
         },
         "Britons": {
-            "id": "BR",
+            "name": "Britons",
             "provinces": [153,143,156,151,140,158,142,155,141,149,139,154,144,148,145,138,146,159,147,56,68,25,9,22,37,72,35,3,30,11,111,134,113,133],
             "flag": "",
             "leader": "??",
-            "capital": "",
+            "capital": 138,
             "culture": "Briton",
-            "religion": "Christian"              
+            "religion": "Christian",
+            "army": 5000,
+            "funds": 1000                
         },
         "Picts": {
-            "id": "PC",
-            "provinces": [112,137,127,121,114,119,135,129,120,110,108,106,107,125,122],
+            "name": "Picts",
+            "provinces": [112,137,127,121,114,119,135,129,120,110,108,106,107,125,122,116,126,130,123,136,109],
             "flag": "",
             "leader": "??",
-            "capital": "",
+            "capital": 110,
             "culture": "Pictish",
-            "religion": "Christian"   
+            "religion": "Christian",
+            "army": 5000,
+            "funds": 1000     
         },
         "Cornubia": {
-            "id": "CR",
+            "name": "Cornubia",
             "provinces": [15, 10, 51, 70],
             "flag": "",
             "leader": "??",
-            "capital": "",
+            "capital": 10,
             "culture": "Briton",
-            "religion": "Christian"   
+            "religion": "Christian",
+            "army": 500,
+            "funds": 1000     
         }
-
-    
-
-
-
     },
-    "capital_provinces": [],
+    "capital_provinces": [23, 62, 79, 28, 65, 138, 110, 10],
     "important_provinces": [],
     "mildly_important_provinces": [],
     "small_provinces": ["36","69","61","34","39","32","48","14","68",
-        "64","72","3","79","41","29","38","63","24","12","60","27","52",
+        "64","72","3","41","29","38","63","24","12","60","27","52",
         "4","70","51","158","140","151","156","155","149","141","37",
         "142","152","157","139","43","0","6","55","50","121","114","116",
         "130","123","136","127","110","137","117","124","5","67","22","147",
-        "107","112","128","118","126","159","10","53","125"
+        "107","128","118","126","159","53","125"
       ],
     "religions": {
         "christian":{},

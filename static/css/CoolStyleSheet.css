@@ -31,7 +31,7 @@ body {
 }
 
 .country:hover {
-  fill: rgb(169, 169, 169);
+  filter:brightness(250%);
 }
 
 .london {
@@ -40,9 +40,16 @@ body {
   stroke-width: 1px;
 }
 .london:hover {
-  fill: darkgrey;
+  filter:brightness(250%);
 }
 
+.hidden_map_element{
+  fill: #71d1f2;
+}
+
+h3 {
+  text-align: center;
+}
 
 /*  */
 /* UI */
@@ -52,11 +59,11 @@ body {
   display: grid; 
   grid-gap: 0px;
   row-gap: 0px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   position: fixed;
-  width: 60vw;
-  margin-left: 20vw;
+  width: 70vw;
+  margin-left: 15vw;
   visibility: visible;
 }
 
@@ -127,16 +134,46 @@ button{
   margin: 5px 30px
 }
 
+#dialog{
+  /* background-color: white; */
+
+}
+
+#dialogue_inner_container {
+  display: grid; 
+  grid-gap: 0px;
+  row-gap: 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  visibility: visible; 
+  margin: auto;
+
+}
+
+.dialogue_container_item {
+  padding: 5px;
+  text-align: center;
+}
+
+
 /*  */
 /* province styling */
 /* */
+
+.capital{
+  /* opacity: 0.8; */
+  filter:brightness(50%);
+  stroke: #000000;
+  stroke-width: 1px;
+  /* background-image: url("../img/placeholder_small.jpg"); */
+}
 
 /* political */
 .Seaxe{
   fill: #5b0000;
 }
 .Mierce{
-  fill: #06005b;
+  fill: #00265f;
 }
 .Northanhymbre{
   fill: #ff9900;
@@ -175,3 +212,16 @@ button{
   fill: #2dc000;
 }
 
+/* army size */
+.no_army{
+  fill: #ffffff;
+}
+.small_army{
+  fill: #5c8cd3;
+}
+.medium_army{
+  fill: #115dcf;
+}
+.large_army{
+  fill: #0034a5;
+}

@@ -22,32 +22,10 @@ connection.onmessage = (e) => {
   }
   else {
     state = JSON.parse(e.data);
-    console.log(state);
+    refreshUI();
+    //console.log(state);
   }
 
-  /*
-  if (e.data == "turn") {
-    getStateFromServer();
-    console.log("turn");
-  }
-
-  try {
-    let message = JSON.parse(e.data);
-  }
-  catch (err) {
-
-  }
-
-
-/*
-  if (JSON.parse(e.data).tag == "state"){
-    state = JSON.parse(e.data);
-    console.log(state);
-  }
-  else {
-    console.log(e.data)
-  }
- */
 }    
 
 function getStateFromServer(){
@@ -60,6 +38,8 @@ function getStateFromServer(){
 }
 
 function sendStateToServer(){
+  $("#end_turn").prop("disabled", true);
+
   try{
     connection.send(JSON.stringify(state));
   }
