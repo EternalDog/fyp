@@ -153,12 +153,14 @@ wss.on('connection', (ws) => {
             try {
                 //state = JSON.parse(message);
                 console.log("Received message => object")
-                movement.concat(JSON.parse(message).movement)
+                //movement.concat(JSON.parse(message).movement)
+                state = process(JSON.parse(message), state); 
                 PlayersEndedTurns++;
-                if (TryEndTurn() == 1) {
-                    state = process(JSON.parse(message));  
+                if (TryEndTurn() == 1) { 
                     clients.forEach(function(client) {
                         PlayersEndedTurns = 0;
+                        state.movement = [];
+                        
                         client.send("Turn end");
                     });
                 }
@@ -193,13 +195,27 @@ function TryEndTurn(){
 }
 
 
-function process(dog){
+function process(dog, dog2){
+
+    if (dog.movement.length < 1) {
+        return dog2;
+    }
+
     doglet = dog;
-    //movement = doglet.movement;
+
+    for (let I4 = 0; I4 < doglet.movement.length; I4++) {
+        movement.push(doglet.movement[I4]);  
+    }
+
+
+    //movement += doglet.movement;
     attackedCapital = "";
     combatWinner = "";
     
     for (var i = 0; i < movement.length; i++){
+        console.log("test");
+
+
 
         for (let index = 0; index < doglet.config.capital_provinces.length; index++) {
             if (doglet.provinces[movement[i][1]].id == doglet.config.capital_provinces[index]){
@@ -241,21 +257,18 @@ function process(dog){
             } 
         } 
 
-        //if (attackedCapital != "" && combatWinner == "defender"){
-        //    annex(doglet.provinces[movement[i][0]].owner, attackedCapital);
-        //}
+        for (let i3 = 0; i3 < doglet.provinces.length; i3++) {
+            try {
+                doglet.nations[doglet.provinces[i3].owner].funds += Math.round( doglet.provinces[i3].pop * 0.025 );
+                doglet.provinces[i3].pop += Math.round( doglet.provinces[i3].pop * 0.005 );
+                doglet.provinces[i3].pop = Math.round(doglet.provinces[i3].pop);
+            } catch (error) {
+                console.log(error)
+            }   
+        }
+
 
     }
-
-    for (let i3 = 0; i3 < doglet.provinces.length; i3++) {
-        //console.log("pop: " + doglet.provinces[i3].pop)
-        try {
-            doglet.nations[doglet.provinces[i3].owner].funds += Math.round( doglet.provinces[i3].pop * 0.025 );
-        } catch (error) {
-            //console.log(error)
-        }   
-    }
-
     return doglet;
 }
 

@@ -1,7 +1,7 @@
 //r00137275
 let tick = [];
 let player = {};
-let playerNation = "Seaxe";
+let playerNation = "none";
 let cursor_lc; //pos
 let cursor_rc; //pos
 let lc_select; //prov id
