@@ -72,9 +72,18 @@ function drawMap() {
   countries = svg.append("g");
 
   svg.on("click", function() {
+    try {
+      svg.selectAll('#rangeCircle').remove();
+    } catch (error) {
+      
+    }
     cursor_lc = d3.mouse(this);
     console.log("left click coordinates, x,y : " + cursor_lc );
-    //console.log(d3.mouse(this));
+    svg.append('circle')
+    .attr('cx', cursor_lc[0])
+    .attr('cy', cursor_lc[1])
+    .attr('r', movementDistance + "px")
+    .attr('id', 'rangeCircle')
   })
 
 

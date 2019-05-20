@@ -73,13 +73,10 @@ function poulateProvinceArray(){
             if (owner != ""){break}
             for (var prop in config.nations) {
                 if ((obj[prop].provinces).indexOf(i) != -1){
-                    //console.log("province " + i +" true, owner: " + prop)
                     owner = prop;                    
                 }
-                //else {console.log("province " + i +" false")}
             }
         }
-        //if (owner == ""){console.log("province " + i +" false")}
         provinces.push(new province(i, dog.NAME_2, dog.NAME_1, owner));
     }
     provinces.push(new province((provinces.length), "London", "England", "Lutae"));
@@ -151,9 +148,7 @@ wss.on('connection', (ws) => {
         }
         else {
             try {
-                //state = JSON.parse(message);
                 console.log("Received message => object")
-                //movement.concat(JSON.parse(message).movement)
                 state = process(JSON.parse(message), state); 
                 PlayersEndedTurns++;
                 if (TryEndTurn() == 1) { 
@@ -197,11 +192,25 @@ function TryEndTurn(){
 
 function process(dog, dog2){
 
+    doglet = dog;
+
+    
+   for (let i3 = 0; i3 < doglet.provinces.length; i3++) {
+       try {
+            console.log(doglet.nations[dog.provinces[i3].owner].funds);
+            doglet.provinces[i3].pop += Math.round( doglet.provinces[i3].pop * 0.005 );
+            doglet.provinces[i3].pop = Math.round(doglet.provinces[i3].pop);
+            doglet.nations[dog.provinces[i3].owner].funds = doglet.nations[dog.provinces[i3].owner].funds + Math.round( doglet.provinces[i3].pop * 0.025 );
+         } catch (error) {
+            console.log(error)
+         }   
+    } 
+
     if (dog.movement.length < 1) {
         return dog2;
     }
 
-    doglet = dog;
+    
 
     for (let I4 = 0; I4 < doglet.movement.length; I4++) {
         movement.push(doglet.movement[I4]);  
@@ -217,12 +226,12 @@ function process(dog, dog2){
 
 
 
-        for (let index = 0; index < doglet.config.capital_provinces.length; index++) {
-            if (doglet.provinces[movement[i][1]].id == doglet.config.capital_provinces[index]){
-                console.log("attacking capital");
-                attackedCapital = doglet.provinces[movement[i][1]].owner;
-            }
-        } 
+        // for (let index = 0; index < doglet.config.capital_provinces.length; index++) {
+        //     if (doglet.provinces[movement[i][1]].id == doglet.config.capital_provinces[index]){
+        //         console.log("attacking capital");
+        //         attackedCapital = doglet.provinces[movement[i][1]].owner;
+        //     }
+        // } 
 
 
         if (doglet.provinces[movement[i][1]].army == 0){//target province is empty
@@ -235,6 +244,9 @@ function process(dog, dog2){
             else {doglet.provinces[movement[i][1]].army = doglet.provinces[movement[i][0]].army}
             doglet.provinces[movement[i][1]].owner = doglet.provinces[movement[i][0]].owner;
             doglet.provinces[movement[i][0]].army = 0;
+            if (attackedCapital != "") {
+                annex(doglet.provinces[movement[i][0]].owner ,doglet.provinces[movement[i][1]].owner);
+            }
         }
         else{
             console.log("combat, army1: " + doglet.provinces[movement[i][0]].army + " army2: " + doglet.provinces[movement[i][1]].army);
@@ -253,22 +265,18 @@ function process(dog, dog2){
                 console.log("Combat winner: " + combatWinner);
                 doglet.provinces[movement[i][1]].owner = doglet.provinces[movement[i][0]].owner;             
                 doglet.provinces[movement[i][1]].army = combatResults[0];
-                doglet.provinces[movement[i][0]].army = 0;    
+                doglet.provinces[movement[i][0]].army = 0;
+                if (attackedCapital != "") {
+                    annex(doglet.provinces[movement[i][0]].owner ,doglet.provinces[movement[i][1]].owner);
+                }    
             } 
         } 
 
-        for (let i3 = 0; i3 < doglet.provinces.length; i3++) {
-            try {
-                doglet.nations[doglet.provinces[i3].owner].funds += Math.round( doglet.provinces[i3].pop * 0.025 );
-                doglet.provinces[i3].pop += Math.round( doglet.provinces[i3].pop * 0.005 );
-                doglet.provinces[i3].pop = Math.round(doglet.provinces[i3].pop);
-            } catch (error) {
-                console.log(error)
-            }   
-        }
-
+    
 
     }
+
+
     return doglet;
 }
 
@@ -284,11 +292,7 @@ function annex(nation1, nation2){
         doglet.provinces[prvs[index]].owner = nation1;
         
     }
-    //console.log("n2: " + n2);
-    //console.log("prvs: " + prvs);
-    //doglet.config.capital_provinces.splice(doglet.config.capital_provinces.indexOf(doglet.nations[nation2].capital)); 
-    //doglet.config.nation_names.splice(doglet.config.nation_names.indexOf(nation2)); 
-    //delete doglet.nations[nation2];
+
     doglet.nations_left--; 
 }
 

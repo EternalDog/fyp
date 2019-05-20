@@ -4,7 +4,6 @@ let state = {};
 
 
 connection.onopen = () => {
-  //console.log("Socketopen");
   connection.send("state");
 }
 
@@ -13,9 +12,6 @@ connection.onerror = (error) => {
 }
 
 connection.onmessage = (e) => {
-  
-  //console.log(e.data);
-
   if (e.data == "Turn end"){
     console.log("Turn has ended, starting new round");
     getStateFromServer();
@@ -23,9 +19,7 @@ connection.onmessage = (e) => {
   else {
     state = JSON.parse(e.data);
     refreshUI();
-    //console.log(state);
   }
-
 }    
 
 function getStateFromServer(){
@@ -39,7 +33,6 @@ function getStateFromServer(){
 
 function sendStateToServer(){
   $("#end_turn").prop("disabled", true);
-
   try{
     connection.send(JSON.stringify(state));
   }

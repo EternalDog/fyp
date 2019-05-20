@@ -155,6 +155,10 @@ button{
   text-align: center;
 }
 
+#rangeCircle {
+  fill: none;
+  stroke: red;
+}
 
 /*  */
 /* province styling */
